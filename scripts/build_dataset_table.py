@@ -106,7 +106,7 @@ def build_table_for_category(category_dir, option_sep_dir, rng, overwrite=False,
             if not os.path.exists(audio_in):
                 continue
 
-            combined_input_path = os.path.join(sample_dir, f'full_input{i + 1}.wav')
+            combined_input_path = os.path.join(sample_dir, f'{group_id}_input{i + 1}.wav')
             order_map_path = os.path.join(sample_dir, f'options_order_target{i + 1}.json')
 
             if os.path.exists(order_map_path) and not overwrite:
@@ -152,9 +152,9 @@ def build_table_for_category(category_dir, option_sep_dir, rng, overwrite=False,
                 'AUDIO': os.path.abspath(combined_input_path),
                 'CORRECT_COMPLETION': f"Completion {correct_letter}",
                 'INPUT': input_text_meta,
-                'OPTION_A': option_text_by_letter['A'],
-                'OPTION_B': option_text_by_letter['B'],
-                'OPTION_C': option_text_by_letter['C'],
+                'COMPLETION_A': option_text_by_letter['A'],
+                'COMPLETION_B': option_text_by_letter['B'],
+                'COMPLETION_C': option_text_by_letter['C'],
                 'SETTING': setting_meta,
                 'CONVERSATION_TYPE': conversation_type_meta,
                 'VOICE_INPUT': voice_target_meta,
@@ -220,9 +220,9 @@ def main():
                 'AUDIO',
                 'CORRECT_COMPLETION',
                 'INPUT',
-                'OPTION_A',
-                'OPTION_B',
-                'OPTION_C',
+                'COMPLETION_A',
+                'COMPLETION_B',
+                'COMPLETION_C',
                 'SETTING',
                 'CONVERSATION_TYPE',
                 'VOICE_INPUT',
