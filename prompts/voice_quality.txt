@@ -1,0 +1,134 @@
+✅ VOICE QUALITY AND EFFORT — BENCHMARK PROMPT TEMPLATE
+INTRODUCTION
+
+You are contributing to a benchmark designed to evaluate audio-language models on their ability to understand how something is spoken, not just what is said.
+The benchmark consists of ambiguity-resolution tasks that require models to use prosodic cues in a target sentence to choose the correct follow-up among three plausible options.
+A text-only model should find all follow-ups equally likely, while an audio-aware model should be able to disambiguate based on nonverbal vocal characteristics — such as whispering, shouting, monotone delivery, breathiness, or vocal tension.
+
+CATEGORY CONTEXT
+
+Category: Voice Quality and Effort
+
+Task Description: The interpretation of the sentence depends on how it is vocally delivered — whether it’s whispered, shouted, flat, tense, airy, etc. These vocal features express speaker state, emotion, or intent, and cannot be derived from the text alone.
+
+Setting: <<SETTING>>
+(The real-world context in which the sentence is spoken — e.g., tense confrontation, therapy session, stage performance, phone call.)
+
+REQUIREMENTS FOR THIS TEST CASE
+1. Input Sentence
+
+Length: 4–12 words
+
+The words must remain lexically identical across all readings
+
+The meaning must change depending on vocal delivery, not pitch contour or emphasis alone
+
+The sentence must support at least three distinct interpretations via vocal quality or vocal effort
+
+2. Follow-up Sentences (3 total)
+
+Length: 5–12 words each
+
+Each must be textually plausible but semantically distinct
+
+Each must correspond to one specific vocal delivery
+
+None should be universally valid: each only works with its matching vocal quality cue
+
+3. Prosody Instructions
+
+For each option:
+
+Provide input prosody instruction: how to vocally deliver the input sentence to make that option correct
+
+Provide follow-up prosody instruction: how the continuation should be delivered to match or respond to that quality
+
+Use imperative style (e.g., “Whisper the entire sentence softly…”)
+
+Reference loudness, vocal tension, monotonicity, breath support, etc.
+
+4. Explanations
+
+For each option:
+
+Explain why that specific vocal delivery makes the continuation correct
+
+Use this standardized structure:
+
+"Explain why delivering the input with a <<VOICE_QUALITY>> voice makes this follow-up the correct continuation."
+
+5. Voice Assignment
+
+Set "conversation_type": "dialogue" if the follow-up is naturally a reply from another speaker
+
+Set "conversation_type": "monologue" if the original speaker would likely continue
+
+OUTPUT FORMAT
+{
+  "category": "Voice Quality and Effort",
+  "setting": "<<SETTING>>",
+  "conversation_type": "<<CONVERSATION_TYPE>>",
+  "input_text": "<<INPUT_SENTENCE>>",
+  "options_text": [
+    "<<FOLLOWUP1>>",
+    "<<FOLLOWUP2>>",
+    "<<FOLLOWUP3>>"
+  ],
+  "input_instructions": [
+    "Deliver the sentence in a soft whisper. Describe how this affects perceived emotion or intent (e.g., secrecy, fear, intimacy).",
+    "Deliver the sentence in a loud, forceful voice. Describe the emotional tone (e.g., urgency, anger, assertion).",
+    "Deliver the sentence in a flat, monotone voice. Describe how this might signal disinterest, sarcasm, or exhaustion."
+  ],
+  "options_instructions": [
+    "Speak this follow-up quietly, with a cautious or secretive tone.",
+    "Speak this with strong projection and emotional intensity, matching a forceful delivery.",
+    "Speak this with flat intonation and low affect to maintain a disengaged or ironic tone."
+  ],
+  "explanations": [
+    "Explain why delivering the input with a whisper makes this follow-up the correct continuation.",
+    "Explain why delivering the input in a loud, forceful tone makes this follow-up the correct continuation.",
+    "Explain why delivering the input in a flat or monotone voice makes this follow-up the correct continuation."
+  ]
+}
+
+✅ EXAMPLE
+{
+  "category": "Voice Quality and Effort",
+  "setting": "backstage before a live performance",
+  "conversation_type": "monologue",
+  "input_text": "They're already here.",
+  "options_text": [
+    "Then keep your voice down — they might hear us.",
+    "Good. Let’s go out and meet them now.",
+    "Ugh, they would be early, wouldn’t they."
+  ],
+  "input_instructions": [
+    "Deliver the sentence in a soft whisper. This implies secrecy, fear of being overheard, or anxiety.",
+    "Deliver the sentence in a loud, assertive voice. This signals readiness, urgency, or leadership.",
+    "Deliver the sentence in a flat, disinterested tone. This conveys annoyance, sarcasm, or fatigue."
+  ],
+  "options_instructions": [
+    "Speak this follow-up in a hushed tone, slightly rushed, to reflect concern about being heard.",
+    "Speak this in an energetic, confident tone to match a call to action.",
+    "Speak this with flat intonation and light emphasis on 'early' to signal sarcasm or annoyance."
+  ],
+  "explanations": [
+    "Delivering the input with a whisper suggests the speaker wants to stay hidden or undetected — this makes a cautionary response fitting.",
+    "Delivering the input with a loud, confident tone shows enthusiasm or authority, matching a follow-up that proposes immediate action.",
+    "Delivering the input in a flat or bored tone suggests frustration or irony, which aligns with the dismissive follow-up."
+  ]
+}
+
+✅ VALIDATION CHECKLIST
+
+Arrays (options_text, input_instructions, options_instructions, explanations) each have exactly 3 items
+
+The input sentence remains lexically identical; only voice quality varies
+
+Each option reflects a different perceived speaker state or intent
+
+Index alignment is preserved across all arrays (i = 0, 1, 2)
+
+Each vocal delivery (whisper, shout, monotone, etc.) enables only one correct follow-up
+
+All utterances and continuations are natural in the chosen setting

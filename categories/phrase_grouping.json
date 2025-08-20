@@ -1,0 +1,6 @@
+{
+  "category": "Phrase Grouping",
+  "task_description": "Interpretation of the sentence changes depending on how the phrases are grouped",
+  "prompt_file": "prompts/phrase_grouping.txt",
+  "data_folder": "data/phrase_grouping"
+}

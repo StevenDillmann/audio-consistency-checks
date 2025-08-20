@@ -1,0 +1,28 @@
+{
+  "category": "Speech Tempo",
+  "setting": "restaurant",
+  "conversation_type": "dialogue",
+  "input_text": "I need the check now.",
+  "options_text": [
+    "I'm in a rush to catch a train.",
+    "I want to savor the moment here.",
+    "I'm not sure if we're done yet."
+  ],
+  "input_instructions": [
+    "Speak quickly with minimal pauses. Suggest urgency, impatience, or breathless delivery.",
+    "Speak slowly and deliberately. Add slight lengthening of content words for emphasis.",
+    "Use a halting pace with pauses between phrases. Include audible hesitations if appropriate."
+  ],
+  "options_instructions": [
+    "Match the fast tempo. Use clipped or rushed delivery, as if under time pressure.",
+    "Match the slow tempo. Use calm, controlled pacing with a steady tone.",
+    "Match the hesitant delivery. Use staggered pacing and a slightly unsure tone."
+  ],
+  "explanations": [
+    "Delivering the input at a fast tempo makes the follow-up 'I'm in a rush to catch a train.' the correct continuation because the urgency and impatience suggest a need to leave quickly.",
+    "Delivering the input at a slow tempo makes the follow-up 'I want to savor the moment here.' the correct continuation because the deliberate pacing indicates a reflective mood, emphasizing the desire to enjoy the experience.",
+    "Delivering the input with pauses or hesitations makes the follow-up 'I'm not sure if we're done yet.' the correct continuation because the uncertainty and hesitation suggest indecision or lack of clarity about the situation."
+  ],
+  "voice_target": "nova",
+  "voice_option": "ash"
+}

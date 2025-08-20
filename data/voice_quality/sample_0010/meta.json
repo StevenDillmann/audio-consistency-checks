@@ -1,0 +1,28 @@
+{
+  "category": "Voice Quality and Effort",
+  "setting": "drugstore",
+  "conversation_type": "dialogue",
+  "input_text": "I can't find it.",
+  "options_text": [
+    "Let's keep it quiet; we don't want attention.",
+    "Well, ask someone for help, quickly!",
+    "Oh well, it's probably not important."
+  ],
+  "input_instructions": [
+    "Deliver the sentence in a soft whisper. This suggests secrecy or a desire to avoid drawing attention.",
+    "Deliver the sentence in a loud, forceful voice. This conveys urgency, frustration, or a need for immediate action.",
+    "Deliver the sentence in a flat, monotone voice. This indicates disinterest or resignation."
+  ],
+  "options_instructions": [
+    "Speak this follow-up quietly, with a cautious tone to suggest discretion.",
+    "Speak this with strong projection and urgency to prompt immediate action.",
+    "Speak this with flat intonation to reflect a lack of concern or importance."
+  ],
+  "explanations": [
+    "Delivering the input with a whisper suggests the speaker wants to handle the situation discreetly, making a cautious response appropriate.",
+    "Delivering the input in a loud, forceful tone indicates the speaker is seeking immediate help, which aligns with a call for urgent action.",
+    "Delivering the input in a flat or monotone voice suggests the speaker is indifferent or unconcerned, matching a dismissive follow-up."
+  ],
+  "voice_target": "verse",
+  "voice_option": "ballad"
+}

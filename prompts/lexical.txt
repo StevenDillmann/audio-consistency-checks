@@ -1,0 +1,113 @@
+INTRODUCTION
+
+You are contributing to a benchmark designed to evaluate audio-language models on their ability to understand how something is spoken, not just what is said.
+The benchmark consists of ambiguity-resolution tasks that require models to use prosodic cues in a target sentence to choose the correct follow-up sentence among three plausible options.
+A text-only model should find all follow-ups equally likely, while an audio-aware model should be able to disambiguate based on prosody.
+
+CATEGORY CONTEXT
+
+Category: <<CATEGORY>>
+Task Description: <<TASK_DESCRIPTION>>
+Setting: <<SETTING>> (This defines the domain or scenario that all sentences should naturally fit into. The input sentence and all follow-ups must sound natural in this setting.)
+
+REQUIREMENTS FOR THIS TEST CASE
+
+Note: The input_instructions and options_instructions fields are imperative prosody guidelines intended for the TTS model to follow when generating speech. The explanations are for benchmark evaluators, not for TTS.
+
+1. Input sentence
+- Must be contextually appropriate for <<SETTING>>
+- Natural, conversational, and ambiguous until prosody is applied
+- Must contain exactly three clearly stressable words: <<WORD1>>, <<WORD2>>, <<WORD3>>
+- These words should belong to different semantic roles (e.g., subject, object, modifier, verb), not just synonyms or variations of the same idea.
+
+2. Three follow-up sentences
+- Each 4–12 words, grammatical, and plausible in <<SETTING>>
+- Each must correspond to one specific stress target (<<WORD1>>, <<WORD2>>, <<WORD3>>)
+- Each must highlight a different interpretive dimension (e.g., WHO, WHAT, WHICH ITEM, WHY, HOW)
+- None should be universally correct: each option must become irrelevant, incoherent, or misleading if a different stress pattern is applied.
+
+3. Prosody instructions
+- For each option, provide instructions on how the input should be spoken to make that option correct
+- Th
+- Use imperative style; capitalize the stressed word (e.g., "Stress the word 'ONLY'")
+- Mention pacing, pauses, and pitch movement if useful
+- Also provide instructions for how to read the follow-up sentence itself
+- Index alignment: item i in input_instructions and options_instructions must match item i in options_text and stress target <<WORDi>>
+
+4. Explanations
+- For each option, explain why stressing that specific word in the input sentence makes that option the correct continuation in <<SETTING>>
+- Tie the reasoning to the semantic shift (e.g., subject vs. object, object vs. modifier, item vs. category), not to trivial rewordings
+
+5. Voice assignment
+- If most natural with one narrator: "different_voices": false
+- If clearer as dialogue: "different_voices": true
+
+OUTPUT FORMAT
+
+Return output strictly as a JSON object with the following keys:
+
+{
+  "category": "<<CATEGORY>>",
+  "setting": "<<SETTING>>",
+  "different_voices": true/false,
+  "input_text": "<<INPUT_SENTENCE>>",
+  "input_stress_targets": ["<<WORD1>>", "<<WORD2>>", "<<WORD3>>"],
+  "options_text": [
+    "<<FOLLOWUP1>>",
+    "<<FOLLOWUP2>>",
+    "<<FOLLOWUP3>>"
+  ],
+  "input_instructions": [
+    "Stress <<WORD1>>; describe pace/pause/intonation here and why.",
+    "Stress <<WORD2>>; describe pace/pause/intonation here and why.",
+    "Stress <<WORD3>>; describe pace/pause/intonation here and why."
+  ],
+  "options_instructions": [
+    "Stress <<OPTION1_KEYWORD>>; describe pace/pause/intonation here and why.",
+    "Stress <<OPTION2_KEYWORD>>; describe pace/pause/intonation here and why.",
+    "Stress <<OPTION3_KEYWORD>>; describe pace/pause/intonation here and why."
+  ],
+  "explanations": [
+    "Explain why stressing <<WORD1>> makes this option correct.",
+    "Explain why stressing <<WORD2>> makes this option correct.",
+    "Explain why stressing <<WORD3>> makes this option correct."
+  ]
+}
+
+EXAMPLE
+
+{
+  "category": "Lexical Stress Shift",
+  "setting": "police",
+  "different_voices": false,
+  "input_text": "She didn't steal the money.",
+  "input_stress_targets": ["SHE", "STEAL", "MONEY"],
+  "options_text": [
+    "Someone else must have taken it.",
+    "She only borrowed it.",
+    "She stole the car instead."
+  ],
+  "input_instructions": [
+    "Stress 'SHE'; firm emphasis at the start; steady pace; falling tone to suggest contrast with another person.",
+    "Stress 'STEAL'; elongate slightly, slight pause after, falling tone to imply she did something else instead.",
+    "Stress 'MONEY'; strong emphasis, clear pause after, rising-falling contour to highlight contrast with another object."
+  ],
+  "options_instructions": [
+    "Stress 'else'; deliberate pause before, falling tone to emphasize a different person.",
+    "Stress 'borrowed'; smooth delivery, rising tone, then fall to contrast with stealing.",
+    "Stress 'car'; sharp emphasis, slight pause before, falling tone to mark it as the real target."
+  ],
+  "explanations": [
+    "When 'SHE' is stressed, the focus shifts to who committed the act, making it clear that someone else was responsible.",
+    "When 'STEAL' is stressed, the meaning becomes that she did something other than stealing, making borrowing the only fitting continuation.",
+    "When 'MONEY' is stressed, it highlights that money was not stolen, setting up a contrast with another object — in this case, the car."
+  ]
+}
+
+VALIDATION CHECKLIST
+- Arrays (options_text, input_instructions, options_instructions, explanations) each length 3
+- input_stress_targets = exactly three words actually present in the input sentence
+- Index alignment holds for all arrays (i = 0,1,2)
+- Each stress target corresponds to a different semantic dimension (WHO, WHAT, WHICH ITEM, etc.)
+- Options are not all variants of the same property
+- Each option only works under its mapped stress target; it should become clearly less compatible or incoherent under the other stress patterns.

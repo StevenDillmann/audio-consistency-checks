@@ -1,0 +1,106 @@
+SPEECH TEMPO — BENCHMARK PROMPT TEMPLATE
+INTRODUCTION
+
+You are contributing to a benchmark designed to evaluate audio-language models on their ability to understand how something is spoken, not just what is said.
+The benchmark consists of ambiguity-resolution tasks that require models to use tempo (speech rate) to select the correct follow-up sentence among three plausible options.
+A text-only model should find all follow-ups equally likely, while an audio-aware model should disambiguate based on whether the input is spoken quickly, slowly, or with pauses.
+
+CATEGORY CONTEXT
+
+Category: Speech Tempo
+
+Task Description: The interpretation of the input sentence depends on the rate of speech — e.g., rushed, slow and deliberate, or interrupted with hesitations. Tempo affects how urgency, confidence, nervousness, or processing load is conveyed.
+
+Setting: <<SETTING>>
+(This defines the conversational context — e.g., emergency call, interview, presentation, therapy session.)
+
+REQUIREMENTS FOR THIS TEST CASE
+1. Input Sentence
+
+4–12 words
+
+Textually ambiguous but plausible in the setting
+
+Must yield at least three distinct interpretations when spoken with:
+
+Fast tempo (rushed or urgent)
+
+Slow and deliberate tempo (intentional, reflective, or dramatic)
+
+Disfluent or halting tempo (with pauses or hesitation; signals nervousness, uncertainty, effort)
+
+2. Follow-up Sentences
+
+3 total, 5–12 words each
+
+Each continuation must clearly align with only one tempo pattern
+
+Each should become incoherent, unlikely, or inappropriate under the others
+
+3. Prosody Instructions
+
+For each option, include:
+
+input prosody: How to deliver the input (describe speech rate and cognitive/emotional impact)
+
+option prosody: How the follow-up should sound to match or respond appropriately
+
+Use imperative style for both.
+
+4. Explanations
+
+Use this structure:
+
+"explanations": [
+  "Explain why delivering the input at a fast tempo makes this follow-up the correct continuation.",
+  "Explain why delivering the input at a slow tempo makes this follow-up the correct continuation.",
+  "Explain why delivering the input with pauses or hesitations makes this follow-up the correct continuation."
+]
+
+5. Voice Assignment
+
+Set "conversation_type": "monologue" for single-speaker delivery across input and follow-ups
+
+Set "conversation_type": "dialogue" if it is more natural as alternating speakers (input vs. follow-ups)
+
+✅ OUTPUT FORMAT
+{
+  "category": "Speech Tempo",
+  "setting": "<<SETTING>>",
+  "conversation_type": "<<CONVERSATION_TYPE>>",  
+  "input_text": "<<INPUT_SENTENCE>>",
+  "options_text": [
+    "<<FOLLOWUP1>>",
+    "<<FOLLOWUP2>>",
+    "<<FOLLOWUP3>>"
+  ],
+  "input_instructions": [
+    "Speak quickly with minimal pauses. Suggest urgency, impatience, or breathless delivery.",
+    "Speak slowly and deliberately. Add slight lengthening of content words for emphasis.",
+    "Use a halting pace with pauses between phrases. Include audible hesitations if appropriate."
+  ],
+  "options_instructions": [
+    "Match the fast tempo. Use clipped or rushed delivery, as if under time pressure.",
+    "Match the slow tempo. Use calm, controlled pacing with a steady tone.",
+    "Match the hesitant delivery. Use staggered pacing and a slightly unsure tone."
+  ],
+  "explanations": [
+    "Explain why delivering the input at a fast tempo makes this follow-up the correct continuation.",
+    "Explain why delivering the input at a slow tempo makes this follow-up the correct continuation.",
+    "Explain why delivering the input with pauses or hesitations makes this follow-up the correct continuation."
+  ]
+}
+
+✅ VALIDATION CHECKLIST
+
+All arrays (options_text, input_instructions, options_instructions, explanations) have exactly 3 elements
+
+The input sentence remains unchanged across conditions
+
+Each follow-up clearly aligns with only one tempo style
+
+Tempo shifts correspond to different emotions, intentions, or speaker states (e.g., urgency, contemplation, anxiety)
+
+Index alignment holds (i = 0, 1, 2)
+
+All content must be plausible and natural in the selected setting

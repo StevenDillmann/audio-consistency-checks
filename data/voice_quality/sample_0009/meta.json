@@ -1,0 +1,28 @@
+{
+  "category": "Voice Quality and Effort",
+  "setting": "kindergarden",
+  "conversation_type": "dialogue",
+  "input_text": "It's time to clean up.",
+  "options_text": [
+    "Let's quietly put away the toys.",
+    "Everyone, clean up right now!",
+    "I guess we should start, if we must."
+  ],
+  "input_instructions": [
+    "Deliver the sentence in a soft whisper. This suggests a calm, secretive approach, perhaps to avoid disturbing others.",
+    "Deliver the sentence in a loud, commanding voice. This implies urgency and authority, emphasizing the importance of immediate action.",
+    "Deliver the sentence in a flat, monotonous voice. This indicates reluctance, disinterest, or lack of enthusiasm for the task."
+  ],
+  "options_instructions": [
+    "Speak this follow-up quietly and soothingly, aligning with a gentle and unobtrusive approach.",
+    "Speak this with a strong, authoritative tone, matching the urgency and command of the initial statement.",
+    "Speak this with a resigned, indifferent tone to reflect the lack of enthusiasm or motivation."
+  ],
+  "explanations": [
+    "Delivering the input with a whisper suggests a desire to move quietly and calmly, making a gentle encouragement to put away toys appropriate.",
+    "Delivering the input in a loud, commanding tone implies urgency and authority, which fits with a direct and immediate call to action.",
+    "Delivering the input in a flat or monotonous voice indicates a lack of interest or enthusiasm, aligning with a reluctant or resigned acknowledgment of the task."
+  ],
+  "voice_target": "verse",
+  "voice_option": "nova"
+}

@@ -1,0 +1,28 @@
+{
+  "category": "Voice Quality and Effort",
+  "setting": "post office",
+  "conversation_type": "dialogue",
+  "input_text": "I can't believe it.",
+  "options_text": [
+    "This is the secret we talked about.",
+    "We need to address this immediately.",
+    "Well, what did you expect?"
+  ],
+  "input_instructions": [
+    "Deliver the sentence in a soft whisper. This suggests a sense of disbelief or secrecy, as if sharing confidential information.",
+    "Deliver the sentence in a loud, forceful voice. This conveys urgency, shock, or the need for immediate action.",
+    "Deliver the sentence in a flat, monotone voice. This indicates sarcasm, resignation, or a lack of surprise."
+  ],
+  "options_instructions": [
+    "Speak this follow-up quietly, with a conspiratorial tone as if sharing a secret.",
+    "Speak this with urgency and emphasis to reflect a call to action.",
+    "Speak this with flat intonation and a hint of sarcasm, reflecting a dismissive or resigned attitude."
+  ],
+  "explanations": [
+    "Delivering the input with a whisper implies the speaker is sharing something sensitive or confidential, making a secretive follow-up appropriate.",
+    "Delivering the input in a loud, forceful tone suggests the speaker is shocked or demanding action, which aligns with an urgent follow-up.",
+    "Delivering the input in a flat, monotone voice suggests the speaker is not surprised or is being sarcastic, which matches a dismissive follow-up."
+  ],
+  "voice_target": "fable",
+  "voice_option": "coral"
+}

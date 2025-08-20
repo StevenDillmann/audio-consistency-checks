@@ -1,0 +1,28 @@
+{
+  "category": "Voice Quality and Effort",
+  "setting": "auditorium",
+  "conversation_type": "dialogue",
+  "input_text": "The meeting starts now.",
+  "options_text": [
+    "Let's keep this between us for now.",
+    "Everyone, please take your seats quickly.",
+    "Great, here we go again."
+  ],
+  "input_instructions": [
+    "Deliver the sentence in a soft whisper. This implies confidentiality, caution, or exclusivity.",
+    "Deliver the sentence in a loud, commanding voice. This conveys authority, urgency, or importance.",
+    "Deliver the sentence in a flat, monotone voice. This suggests indifference, sarcasm, or resignation."
+  ],
+  "options_instructions": [
+    "Speak this follow-up quietly, with a secretive or cautious tone.",
+    "Speak this with strong projection and urgency, matching a commanding delivery.",
+    "Speak this with flat intonation and low enthusiasm to maintain a detached or ironic tone."
+  ],
+  "explanations": [
+    "Explain why delivering the input with a whisper makes this follow-up the correct continuation. It suggests the speaker is sharing privileged information that should not be widely known.",
+    "Explain why delivering the input in a loud, forceful tone makes this follow-up the correct continuation. It indicates the speaker is directing the audience to take immediate action.",
+    "Explain why delivering the input in a flat or monotone voice makes this follow-up the correct continuation. It reflects a lack of enthusiasm or a sense of tedious repetition."
+  ],
+  "voice_target": "echo",
+  "voice_option": "ballad"
+}

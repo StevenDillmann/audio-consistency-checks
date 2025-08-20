@@ -1,0 +1,103 @@
+## PROJECT:
+
+You are contributing to a benchmark designed to evaluate audio-language models on their ability to understand how something is spoken, not just what is said. 
+The benchmark consists of ambiguity-resolution tasks that require models to use prosodic cues in a target sentence to choose the correct follow-up sentence among several plausible options.
+A text-only model should find all follow-ups equally likely, while an audio-aware model should be able to disambiguate based on how the sentence is spoken.
+The tasks follow different categories, based on the nature of the prosodic cues.
+
+## YOUR ROLE 
+
+You are an expert in generating useful test cases for the benchmark with the "gpt-4o-mini-tts" model. 
+In this case, you are creating a test case for the following category: 
+
+<<CATEGORY>>: <<TASK_DESCRIPTION>>
+
+## INSTRUCTIONS 
+
+Design a test case involving lexical stress shift, where the interpretation of a sentence changes depending on which word is emphasized.
+
+1. Write a short input sentence whose interpretation changes depending on which word is stressed (lexical stress).
+2. Write three follow-up sentences:
+   - Each follow-up should make sense only under a specific stress pattern in the input.
+   - All follow-ups must be plausible continuations of the text, but only one should fit under a given stress pattern.
+3. For each of the three follow-ups:
+   - Provide TTS-style instructions for how the input sentence should be spoken to make that option correct (stress the appropriate word).
+   - Provide TTS-style instructions for how to read the follow-up sentence itself.
+4. Explain the logic behind how the input stress pattern makes each option correct.
+5. Decide whether the target/input and the follow-up options should be spoken by the same person or by different people.
+   - If a single narrator is most natural, set the JSON field "different_voices" to false.
+   - If different speakers make the scenario clearer (e.g., dialogue, quoted speech, or contrasts across speakers), set "different_voices" to true.
+   - Do not reference specific TTS voice names; focus your instructions on prosody (which word to stress, pacing, pauses, intonation).
+
+Style and content guidelines:
+ - Input sentence: concise (about 6–14 words), natural, and ambiguous without prosody. Avoid named entities unless needed.
+ - Options: exactly three, each 5–12 words, grammatical, and textually plausible; only one fits per specific stress pattern.
+ - Prosody instructions: imperative style; name the exact word to stress (uppercase that WORD in the instruction text for clarity), mention pacing/pauses if useful, and optionally note pitch rise/fall.
+ - Avoid meta text, phonetic notation, or any references to specific TTS voice brands.
+ - Keep content safe, neutral, and suitable for a general audience.
+
+## OUTPUT FORMAT
+
+Return your output as a JSON object with the following keys. Include:
+ - "conversation_type": either "monologue" (one speaker across all utterances) or "dialogue" (different speakers between target and follow-ups).
+
+{
+  "category": "<<CATEGORY>>",
+  "conversation_type": "<<CONVERSATION_TYPE>>",
+  "input_text": "...",
+  "options_text": ["...", "...", "..."],
+  "input_instructions": ["...", "...", "..."],
+  "options_instructions": ["...", "...", "..."],
+  "explanations": ["...", "...", "..."]
+}
+
+## EXAMPLE OUTPUT FOR CATEGORY: <<CATEGORY>>
+
+{
+  "category": "<<CATEGORY>>",
+  "conversation_type": "dialogue",
+  "input_text": "She didn't steal the money.",
+  "options_text": [
+    "She just borrowed it.",
+    "Much worse, she stole the car.",
+    "They did."
+  ],
+  "input_instructions": [
+    "Stress the word 'STEAL' to imply she did something else instead.",
+    "Stress the word 'MONEY' to show what wasn’t stolen, in contrast to a worse theft.",
+    "Stress the word 'SHE' to imply someone else was responsible."
+  ],
+  "options_instructions": [
+    "Stress the word 'BORROWED' to contrast with steal.",
+    "Stress the word 'CAR' to emphasize it was worse than stealing money.",
+    "Stress the word 'THEY' to emphasize another subject."
+  ],
+  "explanations": [
+    "This option fits when 'STEAL' is stressed. It implies a lesser action like borrowing.",
+    "This option fits when 'MONEY' is stressed. It sets up a worse item to be stolen (a car).",
+    "This option its when 'SHE' is stressed. It suggests someone else stole it."
+  ]
+}
+
+## IMPORTANT INSTRUCTION NOTES:
+
+1. All follow-up options must be textually plausible, even if incorrect without the prosodic cue.
+2. Respond ONLY with a JSON object. Do not include explanations, notes, or any other text outside the JSON.
+3. The examples should be original, realistic, and self-contained. Do not reuse the demo example. Each time, you will be provided with a new context setting.
+In this case, generate your output in the context of the following setting: <<SETTING>>
+
+4. Voice selection policy (important for audio synthesis):
+   - "conversation_type": "dialogue" → the follow-up audios should use a different speaker voice than the target/input audio.
+   - "conversation_type": "monologue" → the same speaker voice should be used for both target/input and follow-ups.
+   - This field only controls speaker assignment; your textual content and prosody instructions should remain the same.
+   - Do not include any brand or model voice names; do not assume a specific gender unless it is necessary for the scenario.
+
+5. Validation checklist (must hold):
+   - Arrays must be length 3: "options_text", "input_instructions", and "options_instructions" each have exactly three items.
+   - Index alignment: item i in "input_instructions" corresponds to item i in both "options_text" and "options_instructions".
+   - Each option is only correct under the intended stress pattern; none should be universally correct.
+   - JSON validity: no trailing commas; quote strings properly; return JSON only with no extra commentary.
+   - Language is clear, safe, and neutral; avoid taboo or sensitive topics.
+
+Generate!
+

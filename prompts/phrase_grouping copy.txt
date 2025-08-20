@@ -1,0 +1,129 @@
+
+INTRODUCTION
+
+You are contributing to a benchmark designed to evaluate audio-language models on their ability to understand how something is spoken, not just what is said.
+The benchmark consists of ambiguity-resolution tasks that require models to use prosodic cues in a target sentence to choose the correct follow-up sentence among three plausible options.
+A text-only model should find all follow-ups equally likely, while an audio-aware model should be able to disambiguate based on prosody.
+
+CATEGORY CONTEXT
+
+Category: <<CATEGORY>>
+Task Description: <<TASK_DESCRIPTION>>
+Setting: <<SETTING>> (This defines the domain or scenario that all sentences should naturally fit into. The input sentence and all follow-ups must sound natural in this setting.)
+
+REQUIREMENTS FOR THIS TEST CASE
+
+1. Input Sentence
+
+Length: 6–14 words
+
+Must contain at least two possible prosodic groupings that yield different meanings
+
+Must sound plausible and natural in the specified setting
+
+Grouping ambiguity must affect scope or attachment of a modifier, referent, or action
+
+The third reading can be more vague or flattened to simulate models that miss chunking
+
+2. Follow-up Sentences (3 total)
+
+Length: 5–12 words each
+
+Must all be grammatically and contextually plausible in the setting
+
+Only one should follow logically from each prosodic grouping
+
+At least one should interpret a different scope or referent
+
+Follow-ups must not all work if the prosody is removed
+
+3. Prosody Instructions
+
+For each follow-up:
+
+Provide input prosody instruction: how to speak the ambiguous input to yield the correct grouping
+
+Provide follow-up prosody instruction: how to speak the follow-up to reinforce the intended meaning
+
+Use imperative tone, capitalizing pause locations (e.g., “Insert a pause after 'MEN'.”)
+
+Mention pitch shape, pacing, boundary cues (e.g., reset, final lengthening)
+
+4. Explanations
+
+For each follow-up, explain why that specific phrasing makes it correct
+
+Focus on semantic interpretation, not just timing (e.g., attachment scope or subject reference)
+
+5. Voice Assignment
+
+Set "different_voices": true if this works better as dialogue
+
+Set "different_voices": false if a single narrator is most natural
+
+
+OUTPUT FORMAT
+
+{
+  "category": "Phrase Grouping",
+  "setting": "<<SETTING>>",
+  "different_voices": true/false,
+  "input_text": "<<INPUT_SENTENCE>>",
+  "options_text": [
+    "<<FOLLOWUP1>>",
+    "<<FOLLOWUP2>>",
+    "<<FOLLOWUP3>>"
+  ],
+  "input_instructions": [
+    "Use phrasing that groups the sentence like: <<GROUPING1>>. Describe the prosodic cue (e.g., pause, pitch reset, lengthening) and why.",
+    "Use phrasing that groups the sentence like: <<GROUPING2>>. Describe how the grouping changes with prosody.",
+    "Use phrasing that groups the sentence like: <<GROUPING3>>. Describe the different attachment or boundary shift here."
+  ],
+  "options_instructions": [
+    "Describe how this follow-up should sound to reflect the interpretation from GROUPING1 and why.",
+    "Describe how this follow-up should sound to reflect the interpretation from GROUPING2 and why.",
+    "Describe how this follow-up should sound to reflect the interpretation from GROUPING3 and why."
+  ],
+  "explanations": [
+    "This prosodic grouping separates elements in a way that makes this continuation logical and coherent.",
+    "This phrasing links the components differently, shifting the interpretation to match this option.",
+    "This alternate phrasing groups a different part of the sentence, aligning with the meaning expressed in this continuation."
+  ]
+}
+
+EXAMPLE
+
+{
+  "category": "Phrase Grouping",
+  "setting": "community event planning",
+  "different_voices": false,
+  "input_text": "The organizers invited old men and women to speak.",
+  "options_text": [
+    "The women they invited were actually quite young.",
+    "Most of them had already retired.",
+    "They wanted a mix of age groups on stage."
+  ],
+  "input_instructions": [
+    "Insert a pause after 'men'; falling pitch to separate 'women' as a new group.",
+    "Do not pause; read 'old men and women' as a single unit with consistent pitch.",
+    "Read with flat intonation and no pauses; de-emphasize distinctions between groups."
+  ],
+  "options_instructions": [
+    "Emphasize 'young'; fall in pitch to contrast with 'old men'.",
+    "Emphasize 'retired'; use a reflective, falling tone.",
+    "Emphasize 'mix'; keep tone even to support a broad interpretation."
+  ],
+  "explanations": [
+    "A pause after 'men' implies that only the men are old, so women could be young — fitting this continuation.",
+    "Reading without a pause makes 'old men and women' one group, implying they’re all old — consistent with retirement.",
+    "Flat, blended prosody supports a reading that avoids specifying who was old, matching the idea of age diversity."
+  ]
+}
+
+VALIDATION CHECKLIST
+- Arrays (options_text, input_instructions, options_instructions, explanations) each length 3
+- input_stress_targets = exactly three words actually present in the input sentence
+- Index alignment holds for all arrays (i = 0,1,2)
+- Each option is only valid under its associated phrasing; it becomes misleading, incoherent, or less likely with other phrasings
+- Interpretive differences are structural, not just affective or stylistic (e.g., attachment, scope, or referent)
+- Setting is natural, and all options are contextually appropriate

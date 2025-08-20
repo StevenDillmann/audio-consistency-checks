@@ -1,0 +1,28 @@
+{
+  "category": "Speech Tempo",
+  "setting": "ski resort",
+  "conversation_type": "dialogue",
+  "input_text": "The lift is stuck again.",
+  "options_text": [
+    "We need to evacuate immediately.",
+    "Let's take a moment to assess.",
+    "Um, should we call someone first?"
+  ],
+  "input_instructions": [
+    "Speak quickly with minimal pauses. Suggest urgency, impatience, or breathless delivery.",
+    "Speak slowly and deliberately. Add slight lengthening of content words for emphasis.",
+    "Use a halting pace with pauses between phrases. Include audible hesitations if appropriate."
+  ],
+  "options_instructions": [
+    "Match the fast tempo. Use clipped or rushed delivery, as if under time pressure.",
+    "Match the slow tempo. Use calm, controlled pacing with a steady tone.",
+    "Match the hesitant delivery. Use staggered pacing and a slightly unsure tone."
+  ],
+  "explanations": [
+    "A fast tempo suggests a sense of urgency and the need for immediate action. The follow-up 'We need to evacuate immediately.' aligns with this urgency, indicating that quick decisions and actions are necessary.",
+    "A slow and deliberate tempo indicates careful consideration and reflection. The follow-up 'Let's take a moment to assess.' fits this mood, suggesting a measured approach to the situation.",
+    "A halting tempo with pauses and hesitations indicates uncertainty or nervousness. The follow-up 'Um, should we call someone first?' captures this uncertainty, reflecting hesitance and the need for confirmation or assistance."
+  ],
+  "voice_target": "coral",
+  "voice_option": "fable"
+}

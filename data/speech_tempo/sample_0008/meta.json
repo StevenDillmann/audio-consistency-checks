@@ -1,0 +1,28 @@
+{
+  "category": "Speech Tempo",
+  "setting": "balloon festival",
+  "conversation_type": "monologue",
+  "input_text": "The balloon is losing altitude fast.",
+  "options_text": [
+    "We need to land immediately.",
+    "Let's enjoy the view while descending.",
+    "Do you think we should be worried?"
+  ],
+  "input_instructions": [
+    "Speak quickly with minimal pauses. Suggest urgency, impatience, or breathless delivery.",
+    "Speak slowly and deliberately. Add slight lengthening of content words for emphasis.",
+    "Use a halting pace with pauses between phrases. Include audible hesitations if appropriate."
+  ],
+  "options_instructions": [
+    "Match the fast tempo. Use clipped or rushed delivery, as if under time pressure.",
+    "Match the slow tempo. Use calm, controlled pacing with a steady tone.",
+    "Match the hesitant delivery. Use staggered pacing and a slightly unsure tone."
+  ],
+  "explanations": [
+    "Delivering the input at a fast tempo makes the follow-up 'We need to land immediately.' the correct continuation because the urgency and speed of the speech convey a sense of immediate action required due to a potentially dangerous situation.",
+    "Delivering the input at a slow tempo makes the follow-up 'Let's enjoy the view while descending.' the correct continuation because the deliberate and reflective pace suggests a calm demeanor and an opportunity to take in the surroundings despite the situation.",
+    "Delivering the input with pauses or hesitations makes the follow-up 'Do you think we should be worried?' the correct continuation because the uncertain and staggered delivery indicates a lack of confidence and a need for reassurance about the situation."
+  ],
+  "voice_target": "coral",
+  "voice_option": "coral"
+}

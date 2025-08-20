@@ -1,0 +1,6 @@
+{
+    "category": "Speech Tempo",
+    "task_description": "Interpretation of the sentence changes depending on the speech tempo",
+    "prompt_file": "prompts/speech_tempo.txt",
+    "data_folder": "data/speech_tempo"
+}

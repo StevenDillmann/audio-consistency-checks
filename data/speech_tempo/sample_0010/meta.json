@@ -1,0 +1,28 @@
+{
+  "category": "Speech Tempo",
+  "setting": "athletic field",
+  "conversation_type": "dialogue",
+  "input_text": "I need to know the score.",
+  "options_text": [
+    "Let's hurry; the next game starts soon.",
+    "It's important to reflect on our performance.",
+    "Could you check again, just to be sure?"
+  ],
+  "input_instructions": [
+    "Speak quickly with minimal pauses. Suggest urgency, impatience, or breathless delivery.",
+    "Speak slowly and deliberately. Add slight lengthening of content words for emphasis.",
+    "Use a halting pace with pauses between phrases. Include audible hesitations if appropriate."
+  ],
+  "options_instructions": [
+    "Match the fast tempo. Use clipped or rushed delivery, as if under time pressure.",
+    "Match the slow tempo. Use calm, controlled pacing with a steady tone.",
+    "Match the hesitant delivery. Use staggered pacing and a slightly unsure tone."
+  ],
+  "explanations": [
+    "A fast tempo suggests urgency, possibly due to an upcoming event, making it reasonable to follow with a statement about hurrying to the next game.",
+    "A slow and deliberate tempo implies a reflective mood, indicating the speaker is contemplating the team's performance and wanting to discuss it.",
+    "Pauses and hesitations convey uncertainty or doubt, suggesting the speaker is unsure about the score's accuracy and needs confirmation."
+  ],
+  "voice_target": "fable",
+  "voice_option": "nova"
+}

@@ -1,0 +1,123 @@
+VOICE QUALITY AND EFFORT — BENCHMARK PROMPT TEMPLATE (Expanded)
+INTRODUCTION
+
+You are contributing to a benchmark designed to evaluate audio-language models on their ability to understand how something is said, not just what is said.
+This benchmark consists of ambiguity-resolution tasks that require models to use vocal characteristics — such as whispering, shouting, monotone delivery, vocal strain, or emotional voice — to choose the correct follow-up sentence among three plausible options.
+A text-only model should find all follow-ups equally likely, while an audio-aware model should resolve the ambiguity based on vocal effort, emotional tone, or physiological state expressed through voice.
+
+CATEGORY CONTEXT
+
+Category: Voice Quality and Effort
+
+Task Description: The interpretation of the sentence depends on nonverbal vocal traits such as whispering, shouting, monotone delivery, breathiness, strain, crying, laughing, or trembling. These vocal qualities express emotion, speaker state, or interpersonal dynamics and cannot be inferred from text alone.
+
+Setting: <<SETTING>>
+(The conversational or situational context — e.g., backstage, hospital room, therapy session, emergency call, performance rehearsal.)
+
+REQUIREMENTS FOR THIS TEST CASE
+1. Input Sentence
+
+Length: 4–12 words
+
+Same exact wording for all interpretations
+
+The meaning must shift depending on vocal delivery, not lexical stress or phrase grouping
+
+The sentence must support three different interpretations via distinct voice qualities (e.g., whispered, shouted, crying)
+
+2. Follow-up Sentences (3 total)
+
+Each 5–12 words
+
+Textually plausible in the given setting
+
+Each makes sense under one specific vocal delivery
+
+Each must become clearly incoherent, unlikely, or misleading under the wrong vocal quality
+
+3. Prosody Instructions
+
+For each option:
+
+Provide input prosody instruction: describe how the sentence should be spoken (e.g., whispered, hoarse, shouted, monotone, trembling)
+
+Provide follow-up prosody instruction: describe how the continuation should sound to match/respond to that delivery
+
+Use imperative style, describing intensity, vocal tract tension, airflow, rhythm, or emotional tone
+
+4. Explanations
+
+Use this standardized structure for all three:
+
+"explanations": [
+  "Explain why delivering the input in a <<VOICE_QUALITY1>> voice makes this follow-up the correct continuation.",
+  "Explain why delivering the input in a <<VOICE_QUALITY2>> voice makes this follow-up the correct continuation.",
+  "Explain why delivering the input in a <<VOICE_QUALITY3>> voice makes this follow-up the correct continuation."
+]
+
+
+Each explanation should link the acoustic delivery to the social or emotional intent.
+
+5. Voice Assignment
+
+Set:
+
+"different_voices": true if it makes more sense as a dialogue (e.g., urgent call, whispered warning + reply)
+
+"different_voices": false if the speaker would naturally continue themselves
+
+✅ OUTPUT FORMAT
+{
+  "category": "Voice Quality and Effort",
+  "setting": "<<SETTING>>",
+  "different_voices": true/false,
+  "input_text": "<<INPUT_SENTENCE>>",
+  "options_text": [
+    "<<FOLLOWUP1>>",
+    "<<FOLLOWUP2>>",
+    "<<FOLLOWUP3>>"
+  ],
+  "input_instructions": [
+    "Describe how to deliver the input in a <<VOICE_QUALITY1>> voice (e.g., whisper, shout, breathy, trembling). Include acoustic traits and emotional or physical cues.",
+    "Describe how to deliver the input in a <<VOICE_QUALITY2>> voice. Include effort level, tone, pacing, and speaker state.",
+    "Describe how to deliver the input in a <<VOICE_QUALITY3>> voice. Include clarity, affect, or physiological strain."
+  ],
+  "options_instructions": [
+    "Describe how this follow-up should sound to reflect <<VOICE_QUALITY1>> delivery (e.g., fear, secrecy, panic).",
+    "Describe how this follow-up should sound to reflect <<VOICE_QUALITY2>> delivery (e.g., authority, urgency, confidence).",
+    "Describe how this follow-up should sound to reflect <<VOICE_QUALITY3>> delivery (e.g., sarcasm, fatigue, despair)."
+  ],
+  "explanations": [
+    "Explain why delivering the input in a <<VOICE_QUALITY1>> voice makes this follow-up the correct continuation.",
+    "Explain why delivering the input in a <<VOICE_QUALITY2>> voice makes this follow-up the correct continuation.",
+    "Explain why delivering the input in a <<VOICE_QUALITY3>> voice makes this follow-up the correct continuation."
+  ]
+}
+
+✅ VALIDATION CHECKLIST
+
+Arrays (options_text, input_instructions, options_instructions, explanations) each have exactly 3 items
+
+The input sentence must stay lexically identical across readings
+
+Each option must depend on a distinct and realistic voice quality, such as:
+
+Whispered (secrecy, fear)
+
+Shouted (urgency, panic, anger)
+
+Trembling (nervousness, emotional overwhelm)
+
+Hoarse or breathy (fatigue, illness)
+
+Crying or cracking (sadness, grief)
+
+Monotone (disinterest, sarcasm, shutdown)
+
+Laughing (joy, mockery, nervousness)
+
+Index alignment between arrays (i = 0, 1, 2)
+
+Each follow-up becomes incoherent or incorrect under the wrong voice quality
+
+The entire example must sound natural in the setting

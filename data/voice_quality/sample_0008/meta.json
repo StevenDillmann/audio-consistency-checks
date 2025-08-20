@@ -1,0 +1,28 @@
+{
+  "category": "Voice Quality and Effort",
+  "setting": "mountain",
+  "conversation_type": "dialogue",
+  "input_text": "I see something moving.",
+  "options_text": [
+    "Stay low and quiet, it might be dangerous.",
+    "Come on, let's get closer and check it out.",
+    "Oh, probably just the wind again."
+  ],
+  "input_instructions": [
+    "Deliver the sentence in a soft whisper. This implies caution, fear, or the need for secrecy.",
+    "Deliver the sentence in a loud, excited voice. This conveys eagerness, curiosity, or boldness.",
+    "Deliver the sentence in a flat, disinterested tone. This suggests dismissiveness or lack of concern."
+  ],
+  "options_instructions": [
+    "Speak this follow-up quietly and with a sense of caution, as if trying to avoid detection.",
+    "Speak this with enthusiasm and energy, encouraging immediate action.",
+    "Speak this with a dismissive and uninterested tone, as if unconcerned with the movement."
+  ],
+  "explanations": [
+    "Delivering the input with a whisper suggests the speaker is cautious or afraid, making a response that emphasizes stealth and safety appropriate.",
+    "Delivering the input in a loud, excited tone indicates curiosity or bravery, aligning with a follow-up that encourages investigation.",
+    "Delivering the input in a flat, indifferent tone implies the speaker is not worried, matching a follow-up that downplays the situation."
+  ],
+  "voice_target": "echo",
+  "voice_option": "fable"
+}

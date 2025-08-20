@@ -1,0 +1,28 @@
+{
+  "category": "Voice Quality and Effort",
+  "setting": "casino",
+  "conversation_type": "dialogue",
+  "input_text": "I can't believe it.",
+  "options_text": [
+    "Don't let anyone know we're onto something.",
+    "Let's cash out before it changes again!",
+    "Yeah, right, like that's actually happening."
+  ],
+  "input_instructions": [
+    "Deliver the sentence in a soft whisper. This implies secrecy, disbelief, or a need to keep the information confidential.",
+    "Deliver the sentence in a loud, excited voice. This signals surprise, enthusiasm, or a sense of urgency.",
+    "Deliver the sentence in a flat, sarcastic tone. This conveys skepticism, disbelief, or irony."
+  ],
+  "options_instructions": [
+    "Speak this follow-up quietly, with a conspiratorial tone, as if sharing a secret.",
+    "Speak this with excitement and urgency, matching the enthusiasm of a big win.",
+    "Speak this with a dismissive, sarcastic tone to convey disbelief or irony."
+  ],
+  "explanations": [
+    "Explain why delivering the input with a whisper makes this follow-up the correct continuation. The whisper indicates a need for secrecy, aligning with a response focused on keeping discoveries private.",
+    "Explain why delivering the input in a loud, excited tone makes this follow-up the correct continuation. The loudness suggests a thrilling development, motivating an urge to act swiftly.",
+    "Explain why delivering the input in a flat or sarcastic tone makes this follow-up the correct continuation. The monotone delivery signals skepticism or disbelief, fitting with a sarcastic response."
+  ],
+  "voice_target": "coral",
+  "voice_option": "shimmer"
+}

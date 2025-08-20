@@ -1,0 +1,6 @@
+{
+    "category": "Voice Quality",
+    "task_description": "Interpretation of the sentence changes depending on the voice quality",
+    "prompt_file": "prompts/voice_quality.txt",
+    "data_folder": "data/voice_quality"
+}

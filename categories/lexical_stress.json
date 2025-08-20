@@ -1,0 +1,6 @@
+{
+  "category": "Lexical Stress",
+  "task_description": "Interpretation of the sentence changes depending on which single word is emphasized",
+  "prompt_file": "prompts/lexical_stress.txt",
+  "data_folder": "data/lexical_stress"
+}

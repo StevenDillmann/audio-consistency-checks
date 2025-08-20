@@ -1,0 +1,28 @@
+{
+  "category": "Speech Tempo",
+  "setting": "drugstore",
+  "conversation_type": "dialogue",
+  "input_text": "I can't find the aspirin.",
+  "options_text": [
+    "Can you help me quickly, please?",
+    "I might need something else entirely.",
+    "Is it usually in a different section?"
+  ],
+  "input_instructions": [
+    "Speak quickly with minimal pauses. Suggest urgency, impatience, or breathless delivery.",
+    "Speak slowly and deliberately. Add slight lengthening of content words for emphasis.",
+    "Use a halting pace with pauses between phrases. Include audible hesitations if appropriate."
+  ],
+  "options_instructions": [
+    "Match the fast tempo. Use clipped or rushed delivery, as if under time pressure.",
+    "Match the slow tempo. Use calm, controlled pacing with a steady tone.",
+    "Match the hesitant delivery. Use staggered pacing and a slightly unsure tone."
+  ],
+  "explanations": [
+    "Delivering the input at a fast tempo indicates urgency and impatience to resolve the issue quickly, making the follow-up 'Can you help me quickly, please?' appropriate as it continues the sense of needing immediate assistance.",
+    "Delivering the input at a slow tempo suggests that the speaker is contemplating their options or considering alternatives, making 'I might need something else entirely.' a fitting continuation as it reflects a reflective or deliberate decision-making process.",
+    "Delivering the input with pauses or hesitations indicates uncertainty or confusion about the situation, making 'Is it usually in a different section?' the correct follow-up as it shows a lack of confidence about the current location of the aspirin."
+  ],
+  "voice_target": "nova",
+  "voice_option": "shimmer"
+}

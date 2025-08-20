@@ -1,0 +1,76 @@
+## PROJECT:
+
+You are contributing to a benchmark designed to evaluate audio-language models on their ability to understand how something is spoken, not just what is said. 
+The benchmark consists of ambiguity-resolution tasks that require models to use prosodic cues to choose the correct follow-up among several plausible options.
+A text-only model should find all follow-ups equally likely, while an audio-aware model should be able to disambiguate based on how the sentence is spoken.
+The tasks follow different categories, based on the nature of the prosodic cues.
+
+## YOUR ROLE 
+
+You are an expert in generating useful test cases for the benchmark with the "gpt-4o-mini-tts" model. 
+In this case, you are creating a test case for the following category: 
+
+<<CATEGORY>>: <<TASK_DESCRIPTION>>
+
+## INSTRUCTIONS 
+
+Design a test case involving lexical stress shift, where the interpretation of a sentence changes depending on which word is emphasized.
+
+1. Write a short input sentence whose interpretation changes depending on which word is stressed (lexical stress).
+2. Write three follow-up sentences:
+   - Each follow-up should make sense only under a specific stress pattern in the input.
+   - All follow-ups must be plausible continuations of the text, but only one should fit under a given stress pattern.
+3. For each of the three follow-ups:
+   - Provide TTS-style instructions for how the input sentence should be spoken to make that option correct (stress the appropriate word).
+   - Provide TTS-style instructions for how to read the follow-up sentence itself.
+4. Explain the logic behind how the input stress pattern makes each option correct.
+
+## OUTPUT FORMAT
+
+Return your output as a JSON object with the following keys:
+
+{
+  "category": "<<CATEGORY>>",
+  "input_text": "...",
+  "options_text": ["...", "...", "..."],
+  "input_instructions": ["...", "...", "..."],
+  "options_instructions": ["...", "...", "..."],
+  "explanations": ["...", "...", "..."]
+}
+
+## EXAMPLE OUPUT FOR CATEGORY: <<CATEGORY>>
+
+{
+  "category": "<<CATEGORY>>",
+  "input_text": "She didn't steal the money.",
+  "options_text": [
+    "She just borrowed it.",
+    "Much worse, she stole the car.",
+    "They did."
+  ],
+  "input_instructions": [
+    "Stress the word 'STEAL' to imply she did something else instead. The follow-up sentence will be 'She just borrowed it.'",
+    "Stress the word 'MONEY' to show what wasn’t stolen, in contrast to a worse theft. The follow-up sentence will be 'Much worse, she stole the car.'",
+    "Stress the word 'SHE' to imply someone else was responsible. The follow-up sentence will be 'They did.'"
+  ],
+  "options_instructions": [
+    "Stress the word 'BORROWED' to contrast with steal. The previous sentence was 'She didn't steal the money.'",
+    "Stress the word 'CAR' to emphasize it was worse than stealing money. The previous sentence was 'She didn't steal the money.'",
+    "Stress the word 'THEY' to emphasize another subject. The previous sentence was 'She didn't steal the money.'"
+  ],
+  "explanations": [
+    "This option fits when 'STEAL' is stressed. It implies a lesser action like borrowing.",
+    "This option fits when 'MONEY' is stressed. It sets up a worse item to be stolen (a car).",
+    "This option its when 'SHE' is stressed. It suggests someone else stole it."
+  ]
+}
+
+## IMPORTANT INSTRUCTION NOTES:
+
+1. All follow-up options must be textually plausible, even if incorrect without the prosodic cue.
+2. Respond ONLY with a JSON object. Do not include explanations, notes, or any other text outside the JSON.
+3. The examples should be original, realistic, and self-contained. Do not reuse the demo example. Each time, you will be provided with a new context setting.
+In this case, generate your output in the context of the following setting: <<SETTING>>
+
+Generate!
+

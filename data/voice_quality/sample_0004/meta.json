@@ -1,0 +1,28 @@
+{
+  "category": "Voice Quality and Effort",
+  "setting": "golf course",
+  "conversation_type": "dialogue",
+  "input_text": "We need to move now.",
+  "options_text": [
+    "Let's be quiet and go unnoticed.",
+    "Hurry up! We can't wait any longer.",
+    "I guess there's no rush after all."
+  ],
+  "input_instructions": [
+    "Deliver the sentence in a soft whisper. This indicates a need for secrecy or stealth.",
+    "Deliver the sentence in a loud, urgent voice. This conveys a sense of emergency or strong necessity.",
+    "Deliver the sentence in a flat, monotone voice. This suggests indifference or reconsideration."
+  ],
+  "options_instructions": [
+    "Speak this follow-up quietly, with a cautious or secretive tone.",
+    "Speak this with strong projection and urgency to match the sense of immediacy.",
+    "Speak this with flat intonation to maintain a relaxed or indifferent tone."
+  ],
+  "explanations": [
+    "Delivering the input with a whisper implies the need to avoid detection, making a quiet and stealthy follow-up appropriate.",
+    "Delivering the input in a loud, urgent tone suggests an immediate need for action, aligning with a hurried response.",
+    "Delivering the input in a flat or monotone voice indicates a lack of urgency or changed priorities, which suits a relaxed follow-up."
+  ],
+  "voice_target": "echo",
+  "voice_option": "ash"
+}

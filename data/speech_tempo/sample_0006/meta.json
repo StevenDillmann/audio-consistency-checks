@@ -1,0 +1,28 @@
+{
+  "category": "Speech Tempo",
+  "setting": "hotel room",
+  "conversation_type": "dialogue",
+  "input_text": "I need a room right now",
+  "options_text": [
+    "Is anything available immediately?",
+    "I have some time to decide.",
+    "Are you sure this is okay?"
+  ],
+  "input_instructions": [
+    "Speak quickly with minimal pauses. Suggest urgency, impatience, or breathless delivery.",
+    "Speak slowly and deliberately. Add slight lengthening of content words for emphasis.",
+    "Use a halting pace with pauses between phrases. Include audible hesitations if appropriate."
+  ],
+  "options_instructions": [
+    "Match the fast tempo. Use clipped or rushed delivery, as if under time pressure.",
+    "Match the slow tempo. Use calm, controlled pacing with a steady tone.",
+    "Match the hesitant delivery. Use staggered pacing and a slightly unsure tone."
+  ],
+  "explanations": [
+    "Delivering the input at a fast tempo makes the follow-up 'Is anything available immediately?' the correct continuation because it conveys a sense of urgency and impatience, suggesting the speaker needs immediate accommodation.",
+    "Delivering the input at a slow tempo makes the follow-up 'I have some time to decide.' the correct continuation because it indicates a reflective or deliberate approach, suggesting the speaker is not in a rush.",
+    "Delivering the input with pauses or hesitations makes the follow-up 'Are you sure this is okay?' the correct continuation because it suggests uncertainty or anxiety, indicating the speaker is unsure about the availability or suitability of the room."
+  ],
+  "voice_target": "alloy",
+  "voice_option": "coral"
+}

@@ -1,0 +1,28 @@
+{
+  "category": "Voice Quality and Effort",
+  "setting": "balloon festival",
+  "conversation_type": "dialogue",
+  "input_text": "The balloon is descending.",
+  "options_text": [
+    "Let's keep it to ourselves for now.",
+    "We need to get everyone to safety!",
+    "Oh well, it was bound to happen."
+  ],
+  "input_instructions": [
+    "Deliver the sentence in a soft whisper. This implies secrecy, discretion, or concern about causing alarm.",
+    "Deliver the sentence in a loud, forceful voice. This signals urgency, a call to action, or concern for safety.",
+    "Deliver the sentence in a flat, monotone voice. This conveys indifference, resignation, or a lack of surprise."
+  ],
+  "options_instructions": [
+    "Speak this follow-up quietly and cautiously, as if sharing a secret.",
+    "Speak this with urgency and high energy, emphasizing the need for immediate action.",
+    "Speak this with a flat, resigned tone to match a sense of inevitability or disinterest."
+  ],
+  "explanations": [
+    "Delivering the input with a whisper suggests the speaker is trying to avoid drawing attention or causing panic, making a discreet follow-up appropriate.",
+    "Delivering the input in a loud, forceful tone emphasizes an urgent need to act, aligning with a call to evacuate or ensure safety.",
+    "Delivering the input in a flat or monotone voice indicates a lack of concern or expectation, aligning with a response that acknowledges inevitability."
+  ],
+  "voice_target": "ballad",
+  "voice_option": "verse"
+}

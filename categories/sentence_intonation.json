@@ -1,0 +1,6 @@
+{
+    "category": "Sentence Intonation",
+    "task_description": "Interpretation of the sentence changes depending on the intonation",
+    "prompt_file": "prompts/sentence_intonation.txt",
+    "data_folder": "data/sentence_intonation"
+}

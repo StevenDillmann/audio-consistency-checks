@@ -1,0 +1,134 @@
+INTRODUCTION
+
+You are contributing to a benchmark designed to evaluate audio-language models on their ability to understand how something is spoken, not just what is said.
+The benchmark consists of ambiguity-resolution tasks that require models to use prosodic cues in a target sentence to choose the correct follow-up among three plausible options.
+A text-only model should find all follow-ups equally likely, while an audio-aware model should be able to disambiguate based on sentence-level intonation patterns (e.g., rising, falling, or marked contours).
+
+CATEGORY CONTEXT
+
+Category: Sentence Intonation
+
+Task Description: The interpretation of the sentence depends on its overall intonation contour, especially toward the sentence-final region. A rising pitch may signal a question or uncertainty, a falling pitch may signal a statement or finality, and a marked pattern (e.g., rise-fall, flat, exaggerated) may convey sarcasm, surprise, disbelief, or emotion.
+
+Setting: <<SETTING>>
+(The conversational scenario in which all sentences should sound natural. Examples: casual conversation, doctor’s office, legal hearing, team meeting, family dinner.)
+
+REQUIREMENTS FOR THIS TEST CASE
+1. Input Sentence
+
+Length: 4–12 words
+
+Must be ambiguous in intent or function without intonation
+
+Must allow for at least three different interpretations, depending on the final pitch contour
+
+Should be plausible and natural in the given setting
+
+Avoid named entities unless necessary for context
+
+2. Follow-up Sentences (3 total)
+
+Length: 5–12 words each
+
+Each must be textually plausible given the input
+
+Each must only make sense under one intonation contour (rising / falling / expressive)
+
+All follow-ups should appear equally likely to a text-only model
+
+3. Prosody Instructions
+
+For each option:
+
+Provide input prosody instruction: how to read the input to trigger the intended intonation contour
+
+Provide follow-up prosody instruction: how the follow-up should be spoken to match and support that intonation pattern
+
+Use imperative style (e.g., “Use a rising pitch at the end...”)
+
+Reference pitch, pacing, contour shape, and communicative effect
+
+4. Explanations
+
+For each follow-up, explain why that intonation pattern makes it the correct continuation
+
+Use a consistent formula:
+
+"Explain why using a <<INTONATION_TYPE>> intonation makes this follow-up the correct continuation."
+
+5. Voice Assignment
+
+Set "different_voices": true if the scenario benefits from having different speakers (e.g., questions and answers)
+
+Set "different_voices": false if a single speaker is more natural
+
+OUTPUT FORMAT
+{
+  "category": "Sentence Intonation",
+  "setting": "<<SETTING>>",
+  "different_voices": true/false,
+  "input_text": "<<INPUT_SENTENCE>>",
+  "options_text": [
+    "<<FOLLOWUP1>>",
+    "<<FOLLOWUP2>>",
+    "<<FOLLOWUP3>>"
+  ],
+  "input_instructions": [
+    "Use a rising intonation toward the end of the sentence. Describe the effect (e.g., question, uncertainty, politeness).",
+    "Use a falling intonation at the end. Describe the effect (e.g., statement, finality, confidence).",
+    "Use a marked pitch contour (e.g., rise-fall, flat, exaggerated). Describe the expressive or pragmatic effect (e.g., sarcasm, surprise, boredom)."
+  ],
+  "options_instructions": [
+    "Deliver this follow-up to reflect the rising intonation reading. Highlight how it continues a question, request, or open-ended intent.",
+    "Deliver this follow-up to reflect the falling intonation reading. Use a tone that affirms, completes, or responds to the prior utterance.",
+    "Deliver this follow-up to reflect the expressive intonation pattern. Use a voice that conveys emotion, stance, or unexpected intent."
+  ],
+  "explanations": [
+    "Explain why using a rising intonation makes this follow-up the correct continuation.",
+    "Explain why using a falling intonation makes this follow-up the correct continuation.",
+    "Explain why using a marked or expressive intonation makes this follow-up the correct continuation."
+  ]
+}
+
+✅ Sentence Intonation Example 
+{
+  "category": "Sentence Intonation",
+  "setting": "casual conversation between friends",
+  "different_voices": false,
+  "input_text": "You're coming to the party.",
+  "options_text": [
+    "Oh—uh, I wasn’t sure I was invited.",
+    "Yeah, I told you I would be.",
+    "Right, because I *always* go to these."
+  ],
+  "input_instructions": [
+    "Use a rising intonation at the end of the sentence. This creates a yes-no question, signaling uncertainty or a request for confirmation.",
+    "Use a falling intonation at the end. This makes the sentence a confident assertion, as if confirming or reminding.",
+    "Use a marked rise-fall intonation, slightly exaggerated. This signals sarcasm, disbelief, or passive-aggressive expectation."
+  ],
+  "options_instructions": [
+    "Deliver this as a response to a question. Use a hesitant tone at first, with a slight pause before 'I wasn’t sure'.",
+    "Deliver this as a confident agreement. Use a clear, firm tone with falling pitch on 'would be'.",
+    "Deliver this with sarcastic emphasis on 'always'. Use exaggerated intonation to signal mockery or annoyance."
+  ],
+  "explanations": [
+    "Using a rising intonation makes the input sound like a question, prompting a response like uncertainty about the invitation.",
+    "Using a falling intonation makes the input a firm statement, so the follow-up confirms the assertion directly.",
+    "Using a rise-fall contour conveys sarcasm or annoyance, which aligns with the ironic response in the follow-up."
+  ]
+}
+
+
+✅ VALIDATION CHECKLIST
+
+Arrays (options_text, input_instructions, options_instructions, explanations) each have exactly 3 items
+
+Each follow-up must be textually plausible but only semantically correct under its corresponding intonation
+
+The input sentence must allow for at least three interpretations depending on pitch contour
+
+Index alignment holds for all arrays (i = 0, 1, 2)
+
+Each intonation contour must disambiguate a distinct speech act or stance (e.g., question, statement, emotion)
+
+The setting is natural, and all sentences are plausible in that context

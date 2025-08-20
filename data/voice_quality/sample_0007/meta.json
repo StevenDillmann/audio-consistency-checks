@@ -1,0 +1,28 @@
+{
+  "category": "Voice Quality and Effort",
+  "setting": "park",
+  "conversation_type": "dialogue",
+  "input_text": "I can't believe it.",
+  "options_text": [
+    "Let's keep it between us for now.",
+    "We need to confront them right away.",
+    "Oh well, I guess it doesn't matter."
+  ],
+  "input_instructions": [
+    "Deliver the sentence in a soft whisper. This suggests disbelief mixed with secrecy or a need for confidentiality.",
+    "Deliver the sentence in a loud, forceful voice. This indicates shock paired with urgency or a call to action.",
+    "Deliver the sentence in a flat, monotone voice. This conveys disbelief paired with indifference or resignation."
+  ],
+  "options_instructions": [
+    "Speak this follow-up quietly, maintaining a tone of secrecy and caution.",
+    "Speak this with strong projection and urgency, matching the initial forceful delivery.",
+    "Speak this with flat intonation and a dismissive tone to reinforce apathy."
+  ],
+  "explanations": [
+    "Delivering the input with a whisper suggests the speaker is shocked but wants to keep the matter private, making a secretive follow-up fitting.",
+    "Delivering the input in a loud, forceful tone shows the speaker's shock and desire to take immediate action, aligning with a confrontational follow-up.",
+    "Delivering the input in a flat or monotone voice implies the speaker is resigned or indifferent, matching a follow-up that minimizes the importance of the situation."
+  ],
+  "voice_target": "ash",
+  "voice_option": "shimmer"
+}
